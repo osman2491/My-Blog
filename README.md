@@ -38,6 +38,7 @@ Run the application
 
 # Known bugs
 
+the app is not sending email to user when they register.
 
 # Technologies used
 
