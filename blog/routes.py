@@ -4,17 +4,15 @@ from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
 from blog import app, db, bcrypt
 from blog.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
-from blog.models import User, Post
+from .models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
-
-
+from request import get_quotes
 @app.route("/")
 @app.route("/home")
 def home():
+    newquotes = get_quotes()
     posts = Post.query.all()
-    return render_template('home.html', posts=posts)
-
-
+    return render_template('home.html', posts=posts,newquotes=newquotes)
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
